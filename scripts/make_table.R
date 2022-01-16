@@ -5,7 +5,10 @@ library(paletteer)
 library(stringr)
 make_table <- function(){
 df <- read_tsv("/data/scratch/janani/molevolvr_out/Sr4eyi_full/cln_combined_by_domarch.tsv")
-df <- df %>% subset( select = c(QueryName, Species,Lineage, AccNum, PcIdentity, EValue, DomArch.Pfam))
+df <- df %>% subset( select = c(QueryName, Name,
+																Species, Lineage,
+																AccNum, PcPositive, PcIdentity,
+																DomArch.Pfam))
 df <- df[order(df$QueryName),]
 df <- df %>% mutate(DomArch.Pfam = str_replace_all(DomArch.Pfam, "\\+", "\\+<br>"))
 df$QueryName <- str_replace_all(df$QueryName, "ivanovii", "BFirmic_Livanovii_WP_111143678.1")
@@ -16,13 +19,14 @@ df$QueryName <- str_replace_all(df$QueryName, "seeligeri_3_RS12040", "BFirmic_Ls
 table <- df %>%
   gt() %>%
   fmt_markdown(columns = everything()) %>%
-  cols_label(AccNum = "Accession", EValue = "E value") %>%
+  cols_label(QueryName="Query", Name="Subject"
+  					 AccNum = "Accession") %>%
   tab_options(
       # Headings; Titles
       heading.background.color="black",
       heading.border.bottom.color="#989898",
-      heading.title.font.size="12px",
-      heading.subtitle.font.size="11px",
+      heading.title.font.size="14px",
+      heading.subtitle.font.size="13px",
       # Column labels
       column_labels.background.color="grey50", #B09C85FF
       column_labels.font.size="12px",
@@ -45,7 +49,7 @@ table <- df %>%
       table_body.hlines.color="#989898",
       table_body.border.top.color="#989898",
       table.font.size="10px",
-      table.width="80%"
+      table.width="90%"
     )
 
 gtsave(table, "table.pdf")
