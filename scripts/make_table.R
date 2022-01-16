@@ -8,6 +8,11 @@ df <- read_tsv("/data/scratch/janani/molevolvr_out/Sr4eyi_full/cln_combined_by_d
 df <- df %>% subset( select = c(QueryName, Species,Lineage, AccNum, PcIdentity, EValue, DomArch.Pfam))
 df <- df[order(df$QueryName),]
 df <- df %>% mutate(DomArch.Pfam = str_replace_all(DomArch.Pfam, "\\+", "\\+<br>"))
+df$QueryName <- str_replace_all(df$QueryName, "ivanovii", "BFirmic_Livanovii_WP_111143678.1")
+df$QueryName <- str_replace_all(df$QueryName, "monocytogenes_inLP", "BFirmic_Lmonocytogenes_WP_014601135.1")
+df$QueryName <- str_replace_all(df$QueryName, "seeligeri_1_RS12040", "BFirmic_Lseeligeri_WP_012986389.1")
+df$QueryName <- str_replace_all(df$QueryName, "seeligeri_2_RS12040", "BFirmic_Lseeligeri_WP_012986390.1")
+df$QueryName <- str_replace_all(df$QueryName, "seeligeri_3_RS12040", "BFirmic_Lseeligeri_WP_012986391.1")
 table <- df %>%
   gt() %>%
   fmt_markdown(columns = everything()) %>%
@@ -76,6 +81,6 @@ filterByDomains <- function(){
   write_tsv(df, "/data/scratch/janani/molevolvr_out/Sr4eyi_full/cln_combined_by_domarch.tsv")
 }
 
-filterByGenome()
-filterByDomains()
+#filterByGenome()
+#filterByDomains()
 make_table()
