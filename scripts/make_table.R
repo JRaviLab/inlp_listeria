@@ -19,17 +19,18 @@ df$QueryName <- str_replace_all(df$QueryName, "seeligeri_3_RS12040", "BFirmic_Ls
 table <- df %>%
   gt() %>%
   fmt_markdown(columns = everything()) %>%
-  cols_label(QueryName="Query", Name="Subject"
+  cols_label(QueryName="Query", Name="Subject",
   					 AccNum = "Accession") %>%
+  tab_source_note(md("More information available on [GitHub](https://github.com/jravilab/inlp_listeria).")) %>%
   tab_options(
       # Headings; Titles
       heading.background.color="black",
       heading.border.bottom.color="#989898",
-      heading.title.font.size="14px",
-      heading.subtitle.font.size="13px",
+      heading.title.font.size="18px",
+      heading.subtitle.font.size="18px",
       # Column labels
       column_labels.background.color="grey50", #B09C85FF
-      column_labels.font.size="12px",
+      column_labels.font.size="18px",
       # Stubs
       stub.background.color="#4DBBD5", #B09C85FF
       stub.border.style="dashed",
@@ -39,7 +40,7 @@ table <- df %>%
       row_group.background.color="#3C5488", #FFEFDB80
       row_group.border.top.color="#989898",
       row_group.border.bottom.style="none",
-      row_group.font.size="12px",
+      row_group.font.size="18px",
       # Summary rows
       summary_row.border.color="#989898",
       # summary_row.background.color="#FFEBEE",
@@ -48,7 +49,7 @@ table <- df %>%
       table.font.color="#323232",
       table_body.hlines.color="#989898",
       table_body.border.top.color="#989898",
-      table.font.size="10px",
+      table.font.size="16px",
       table.width="90%"
     )
 
