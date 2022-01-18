@@ -1,6 +1,4 @@
-# Novel Internalin P homologs in Listeria ivanovii londoniensis and Listeria seeligeri
-
-_Running Title: L. ivanovii londoniensis and L. seeligeri encode InlP homologs_
+# Novel Internalin P homologs in Listeria
 
 Kayla N Conner<sup>1,2,#</sup>, Joseph T Burke<sup>1,3,4,#</sup>, Janani Ravi<sup>1,4,</sup>\*, Jonathan W Hardy<sup>1,2,</sup>\*
 
